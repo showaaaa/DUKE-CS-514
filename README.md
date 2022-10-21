@@ -21,21 +21,25 @@ In this lab, we use a dumbbell topology that connects four hosts (h1-h4) with tw
 ## 2. Double Links Dumbbell
 
 1. Use `make run` to run the current code again. This time, we will use [iperf](https://openmaniak.com/iperf.php) to measure the usable bandwidth. Use `h3 iperf -s &` and `h4 iperf -s &` to run iperf in server mode in `bg` on h3 and h4. Then use `h1 iperf -c h3` to measure the usable bandwidth between h1 and h3. After that, use `h2 iperf -c h4` to measure the usable bandwidth between h2 and h4. Then use
-```
-h1 iperf -c h3 &
-h2 iperf -c h4
+    ```
+    h1 iperf -c h3 &
+    h2 iperf -c h4
 
-```
-to measure the usable bandwidth while communicating concurrently. After the second command is finished, use `h1 bg` to retrieve the previous result. Fill in those numbers in the [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/).
+    ```
+    to measure the usable bandwidth while communicating concurrently. After the second command is finished, use `h1 bg` to retrieve the previous result. Fill in those numbers in the [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/).
+
 2. Answer the questions in [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/) about when and why two flows are traveling across the dumbbell, they receive only proportional bandwidth.  Do you have ideas on how to improve this?
 ![dumbbell](./pod-topo/dumbbell2.png)
-3. Yes! We can balance the load with one more link! You can improve the topology by connecting `s1-p4` with `s2-p4`.
-4. Changing the `topology.json` is not enough, you have to tell s1 and s2 to differentiate the flow from h1 to h3, and h2 to h4, and route them across different links. Please change the related longest prefix matching table accordingly.
-5. Rerun the mininet and test the concurrent bandwidth with
-```
-h1 iperf -c h3 &
-h2 iperf -c h4
 
-```
-And fill the numbers in [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/).
+3. Yes! We can balance the load with one more link! You can improve the topology by connecting `s1-p4` with `s2-p4`.
+
+4. Changing the `topology.json` is not enough, you have to tell s1 and s2 to differentiate the flow from h1 to h3, and h2 to h4, and route them across different links. Please change the related longest prefix matching table accordingly.
+
+5. Rerun the mininet and test the concurrent bandwidth with
+    ```
+    h1 iperf -c h3 &
+    h2 iperf -c h4
+
+    ```
+    And fill the numbers in [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/).
 6. Submit `basic.p4`, `s1-runtime.json`, `s2-runtime.json`, and `topology.json`.
