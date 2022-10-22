@@ -28,7 +28,7 @@ In this lab, we use a dumbbell topology that connects four hosts (h1-h4) with tw
     ```
     to measure the usable bandwidth while communicating concurrently. After the second command is finished, use `h1 bg` to retrieve the previous result. Fill in those numbers in the [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/).
 
-2. Answer the questions in [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/) about when and why two flows are traveling across the dumbbell, they receive only proportional bandwidth.  Do you have ideas on how to improve this?
+2. Answer the questions in [lab2 question set](https://www.gradescope.com/courses/429975/assignments/2367568/) about when and why two flows are traveling across the dumbbell, they receive only proportional bandwidth on one link.  Do you have ideas on how to improve this?
 ![dumbbell](./pod-topo/dumbbell2.png)
 
 3. Yes! We can balance the load with one more link! You can improve the topology by connecting `s1-p4` with `s2-p4`.
